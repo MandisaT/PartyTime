@@ -1,0 +1,15 @@
+<h1>Events#index</h1>
+<%@events.each do |p| %>
+<tr>
+<td>Name:</td>
+<%= p.name %>
+Date:
+<td>Type of event</td>
+<%=p.party_type%>
+<%end%>
+</tr>
+ <br>
+ <%= link_to 'create your guest list' ,new_guest_list_path %>
+ <br>
+  
+

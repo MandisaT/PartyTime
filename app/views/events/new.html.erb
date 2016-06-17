@@ -1,0 +1,27 @@
+
+<h1>Events#new</h1>
+
+<%= form_for @event do |p| %>
+	<%=p.label "Event Name" %>
+	<br>
+	<%=p.text_field :name %>
+	<br>
+	<%=p.label "Date" %>
+	<br>
+	<%=p.text_field :date %>
+	<br>
+	<%=p.label "Address" %>
+	<br>
+	<%=p.text_field :adress %>
+	<br>
+	<br>
+	<%=p.label "Budget" %>
+	<br>
+	<%=p.text_field :budget %>
+	<br>
+	<%=p.label "Type of Event" %>
+	<br>
+	<%=p.select(:party_type, options_for_select([['Birthday','Birthday'],['Babyshower','Babyshower'],['Holiday Party','Holiday Party'],['Dinner Party','Dinner Party'],['Office Party','Office Party'],['Home Warming Party','Home Warming Party '],['Graduation','Graduation'],['Retirement','Retirement']])) %>
+	<br>
+	<%=p.submit%>
+	<%end%>

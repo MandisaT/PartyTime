@@ -1,0 +1,12 @@
+
+<%@products.each do |f| %>
+<%= f.name %>
+<br>
+<%= f.price %>
+<%= f.quantity %>
+
+<%= link_to "Add to Shopping Cart", logout_path, method: :total %>
+<!-- guessing this is how to link the add to shopcart method -->
+<%end %>
+
+

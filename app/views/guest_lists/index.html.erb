@@ -1,0 +1,19 @@
+
+<h1>Guests#index</h1>
+<%@guest_lists.each do |g| %>
+<h2>FirstName:</h2>
+<%= g.fname %>
+
+<h2>LastName:</h2>
+<%= g.lname %>
+
+<h2>Email:</h2>
+<%= g.email %>
+
+<h2> Extra Guest:</h2>
+<%= g.extra_guest %>
+
+<h2>Awesome food needs</h2>
+<h4><%=g.dietary_type%></h4>
+<%end%>
+

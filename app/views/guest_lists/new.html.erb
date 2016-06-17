@@ -1,0 +1,29 @@
+<h1>GuestLists#new</h1>
+
+
+<%= form_for @guestlist do |g| %>
+	<%=g.label "first name" %>
+	<br>
+	<%=g.text_field :fname %>
+	<br>
+	<%=g.label "last name" %>
+	<br>
+	<%=g.text_field :lname %>
+	<br>
+	<br>
+	<%=g.label "email" %>
+	<br>
+	<%=g.text_field :email%>
+	<br>
+	<%=g.label "Extra Guest" %>
+	<br>
+	<%=g.text_field :extra_guest %>
+	<br>
+	<%=g.label "Awesome food needs" %>
+	<br>
+	<%=g.select(:dietary_type, options_for_select([['Gluten-Free','Gluten-Free'],['Pescatarian','Pescatarian'],['Vegan','Vegan'],['Vegetarian','Vegetarian'],['Diabetic','Diabetic'],['Peanut Allergies','Peanut Allergies'],['Lactoce Intolerant','Lactoce Intolerant'],['None','None']])) %>
+	<br>
+	<%=g.submit%>
+	<br>
+<%end%>
+
