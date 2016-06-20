@@ -23,7 +23,7 @@ class UsersController < ApplicationController
 	if @user.save
 		# saving the records 
 		flash[:notice] = "Yeah step one to the party."
-		redirect_to  new_event_path
+		redirect_to  user_path @user
 		# redirecting to the show page for this user 
 	else
 		flash[:alert] = "There was a problem lets try again"
@@ -36,7 +36,7 @@ end
 
 def update
  @user = User.find(params[:id])
- @user.update(user_paramas) 
+ @user.update(user_params) 
  redirect_to  user_path @user 
 end 
 

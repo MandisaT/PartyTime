@@ -1,13 +1,11 @@
-
-<h1>Events#new</h1>
-
 <%= form_for @event do |p| %>
 	<%=p.label "Event Name" %>
 	<br>
 	<%=p.text_field :name %>
 	<br>
-	<%= p.label :date %>
-	<%= p.date_select(:date, :order => [:month, :day, :year]) %>
+	<%=p.label "Date" %>
+	<br>
+	<%=p.text_field :date %>
 	<br>
 	<%=p.label "Address" %>
 	<br>
@@ -23,4 +21,5 @@
 	<%=p.select(:party_type, options_for_select([['Birthday','Birthday'],['Babyshower','Babyshower'],['Holiday Party','Holiday Party'],['Dinner Party','Dinner Party'],['Office Party','Office Party'],['Home Warming Party','Home Warming Party '],['Graduation','Graduation'],['Retirement','Retirement']])) %>
 	<br>
 	<%=p.submit%>
+
 	<%end%>

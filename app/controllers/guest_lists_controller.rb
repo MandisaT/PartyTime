@@ -1,10 +1,11 @@
 class GuestListsController < ApplicationController
   
-		  def new 
-
-			  	@guestlist = GuestList.new
+		def new 
+			 @guest_list = GuestList.new
+			 @event = params[:event_id]
 			  
 		end
+	  
 	  def show
 	  	@guest_list =GuestList.find(params[:id])
 	  end 
@@ -15,7 +16,8 @@ class GuestListsController < ApplicationController
 		if @guest_list.save
 			# saving the records 
 			
-			redirect_to  guest_lists_path
+			redirect_to  guest_lists_path @guestlist
+		
 			# redirecting to the show page for guest
 		else
 			
@@ -25,7 +27,8 @@ class GuestListsController < ApplicationController
 	  
 	  
 	 def index
-	  	@guest_lists =GuestList.all
+	 	@user = current_user
+	 	@events = @user.events
 	  end
 	  def edit
 	  	  @guest_list =GuestList.find(params[:id]) 
@@ -34,12 +37,17 @@ class GuestListsController < ApplicationController
 	def update
 		 @guest_list = GuestList.find(params[:id])
 		 @guest_list.update(guestlist_parmas) 
-		 redirect_to  user_path @user 
+		 redirect_to  guest_list_path @user 
 	end 
+	def destroy
+	   GuestList.find(params[:id]).destroy
+	    flash[:success] = "User deleted"
+	    redirect_to guest_list_user_path
+	end
 	private 
 
 	def guest_params
-		params.require(:guest_list).permit(:fname, :lname, :email, :extra_guest,:dietary_type)
+		params.require(:guest_list).permit(:fname, :lname, :event_id, :email, :extra_guest, :dietary_type)
 
 	end 
 end

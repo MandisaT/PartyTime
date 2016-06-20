@@ -1,2 +1,9 @@
 <h1>GuestLists#show</h1>
-<p>Find me in app/views/guest_lists/show.html.erb</p>
+	<%= g.fname %>
+	<%= g.lname %>
+	<%= g.email %>
+	<%= g.extra_guest %>
+<h4><%=g.dietary_type%></h4>
+<%=link_to  "Edit" ,guest_list_path(@guest_list) %>
+<%= link_to "Delete",guest_list_path, method: :delete %>
+ <%= link_to 'what items do you need ' ,new_product_path %>
