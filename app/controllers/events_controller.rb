@@ -1,8 +1,14 @@
 class EventsController < ApplicationController
-
+	
+	def show 
+		@event = Event.find(params[:id])
+	end 
 	def index
 		@events = Event.all
 	end
+	def edit 
+		@event = Event.find(params[:id])
+	end 
 
 	def new
 	  	@event = Event.new
@@ -14,7 +20,7 @@ class EventsController < ApplicationController
 		if @event.save
 			# saving the records 
 			flash[:notice] = "Yeah lets create this party ."
-			redirect_to  events_path
+			redirect_to  event_path @event
 			# redirecting to the show page for this event
 		else
 			flash[:alert] = "There was a problem lets try again"
@@ -25,6 +31,9 @@ class EventsController < ApplicationController
 	def show
 	    @event = Event.find(params[:id])
 	    @total = total(@event)
+	    date_now = Date.today 
+		days = (date_now - @event.date)
+		flash[:notice] = " You have #{days}  days to plan this party"
 	end
 
 	
@@ -35,7 +44,11 @@ class EventsController < ApplicationController
 		end
 		total_cost
 	end 
-
+    def update
+    	@event = Event.find(params[:id])
+ 		@event.update(event_params) 
+ 		redirect_to event_path @event
+    end 
 
 	def shopping_cart(event)
 		event.products.each do |product|
@@ -44,6 +57,25 @@ class EventsController < ApplicationController
  		remaining_budget
 	end
 	
+	# def days_until (event_date)
+	# 	now = Date.current_user
+	# 	event_date = now.year - event.year
+	# 	event_date = now.day - event.day 
+	# end 
+	
+	# def days_until_party(event_date)
+	# 	now = Time.now.to_date
+	# 	now.year - event_date.date - ((now.month > event_date.date || (now.month == event.date && now.day)))
+	# end 
+	# def future
+	# 	day.future
+ #    end 
+	
+	def destroy
+	  Event.find(params[:id]).destroy
+	    flash[:success] = "User deleted"
+	    redirect_to new_event_path
+	end
 		 
 	private
 	# thinking of this similiar to the the post controller which is why  i merged the user_id and current_user so it can 

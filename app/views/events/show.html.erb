@@ -2,5 +2,17 @@
 <p>Find me in app/views/events/show.html.erb</p>
 
 <%= @event.name %>
+<br>
+<%= @event.date%>
+ <br>
+<%= link_to "Delete", event_path, method: :delete %>
+<br>
+<%=link_to  "Edit" , edit_event_path(@event) %>
+
+ <%= link_to 'create your guest list' ,new_guest_list_path %>
+ <br>
 total costs =  <%= @total %>
+
+<br>
 remaining budget =  <%= @shopping_cart %>
+

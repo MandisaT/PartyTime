@@ -1,0 +1,8 @@
+<%= f.name %>
+	<br>
+	<%= f.price %>
+	<br>
+	<%= f.quantity %>
+	<br>
+<%=link_to  "Edit" ,product_list_path(@product) %>
+<%= link_to "Delete", new_event_path, method: :delete %>

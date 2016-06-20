@@ -1,0 +1,26 @@
+ <h1>Update </h1>
+<%= form_for @user do |f| %>
+	<%=f.label "first name" %>
+	<br>
+	<%=f.text_field :fname %>
+	<br>
+	<%=f.label "last name" %>
+	<br>
+	<%=f.text_field :lname %>
+	<br>
+	<br>
+	<%=f.label "email" %>
+	<br>
+	<%=f.text_field :email%>
+	<br>
+	<%=f.label "password" %>
+	<br>
+	<%=f.password_field :password %>
+	<br>
+	<!-- 
+	when you hit the submit buttone your sending params  -->
+	<%=f.submit%>
+	<br>
+<%end%>
+
+<%= link_to "Login", login_path %>
