@@ -1,4 +1,4 @@
-<%= form_for @guestlist do |g| %>
+<%= form_for @guest_list do |g| %>
 	<%=g.label "first name" %>
 	<br>
 	<%=g.text_field :fname %>
@@ -14,6 +14,7 @@
 	<br>
 	<%=g.label "Extra Guest" %>
 	<br>
+
 	<%=g.text_field :extra_guest %>
 	<br>
 	<%=g.label "Awesome food needs" %>

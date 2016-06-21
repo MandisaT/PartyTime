@@ -1,16 +1,18 @@
 
 <%@products.each do |f| %>
-	<%= f.name %>
+	Name:<%= f.name %>
 	<br>
-	<%= f.price %>
+	Price:<%= f.price %>
 	<br>
-	<%= f.quantity %>
+	Quantity:<%= f.quantity %>
 	<br>
-	<%= link_to "Add to Shopping Cart" %>
+<%= link_to "Delete", product_path(f) %>
+<%= link_to "Edit", product_path(f) %>
+<!-- this does not work  -->
+
+	
 <!-- guessing this is how to link the add to shopcart method -->
 <%end %>
 
-total costs =  <%= @total %>
-<br>
-remaining budget =  <%= @shopping_cart %>
+
 

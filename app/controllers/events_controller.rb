@@ -1,8 +1,4 @@
 class EventsController < ApplicationController
-	
-	def show 
-		@event = Event.find(params[:id])
-	end 
 	def index
 		@events = Event.all
 	end
@@ -30,10 +26,12 @@ class EventsController < ApplicationController
 	
 	def show
 	    @event = Event.find(params[:id])
+	    @guest_list = GuestList.new
+	    @product = Product.new
 	    @total = total(@event)
 	    date_now = Date.today 
-		days = (date_now - @event.date)
-		flash[:notice] = " You have #{days}  days to plan this party"
+		days = (@event.date - date_now)
+		flash[:notice] = " You have #{days} days to plan this party"
 	end
 
 	
@@ -82,7 +80,7 @@ class EventsController < ApplicationController
 	# print out the user_id and connects 
 	# read up more on associations in models and see how  it works 
 	def event_params
-		 params.require(:event).permit(:user_id,:party_type,:name ,:adress,:date,:budget).merge(user: current_user)
+		 params.require(:event).permit(:user_id,:party_type,:name ,:adress,:date,:budget,:product_id).merge(user: current_user)
 	end 
 
 end 
