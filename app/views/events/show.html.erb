@@ -1,15 +1,24 @@
-<h1>Events#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
 
-<%= @event.name %>
+
+
+<h1><%= @event.name %></h1>
 <br>
-<%= @event.date%>
+<h2><%= @event.date%></h2>
  <br>
 <%= link_to "Delete", event_path, method: :delete %>
 <br>
 <%=link_to  "Edit" , edit_event_path(@event) %>
+<br>
 
- <%= link_to 'create your guest list' ,new_guest_list_path %>
+
+ <!-- < % = link_to 'create your guest list' ,new_guest_list_path % > -->
+ <%= render 'guest_lists/guest_info' %>
+ <br>
+ <%=link_to  "Show Guest Your List" , guest_lists_path(:event_id => @event.id)%>
+ <br>
+ <%= render 'products/product_info' %>
+ <br>
+  <%=link_to  "Show Your Products" , products_path(:event_id => @event.id)%>
  <br>
 total costs =  <%= @total %>
 
