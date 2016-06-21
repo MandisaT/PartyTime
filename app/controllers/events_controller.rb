@@ -30,6 +30,8 @@ class EventsController < ApplicationController
 	    @product = Product.new
 	    @total = total(@event)
 	    date_now = Date.today 
+	    guest = (@event.guest_lists.count)
+	    flash[:alert] = " You have #{guest}  guest  on your list"
 		days = (@event.date - date_now)
 		flash[:notice] = " You have #{days} days to plan this party"
 	end
@@ -72,7 +74,7 @@ class EventsController < ApplicationController
 	def destroy
 	  Event.find(params[:id]).destroy
 	    flash[:success] = "User deleted"
-	    redirect_to new_event_path
+		redirect_to  event_path @event
 	end
 		 
 	private
@@ -80,7 +82,7 @@ class EventsController < ApplicationController
 	# print out the user_id and connects 
 	# read up more on associations in models and see how  it works 
 	def event_params
-		 params.require(:event).permit(:user_id,:party_type,:name ,:adress,:date,:budget,:product_id).merge(user: current_user)
+		 params.require(:event).permit(:user_id,:party_type,:name ,:adress,:date,:budget,:product_id,:guest_list_id).merge(user: current_user)
 	end 
 
 end 

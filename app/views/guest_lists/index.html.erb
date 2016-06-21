@@ -1,6 +1,7 @@
 
 <h1>Guests#index</h1>
 <% @guest_lists.each do |g| %>
+<br>
 	<%= g.fname %>
 <%= link_to "Delete", guest_list_path(g) %>
 <%= link_to "Edit", guest_list_path(g) %>
